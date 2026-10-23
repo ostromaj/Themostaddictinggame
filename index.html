@@ -183,7 +183,8 @@ function dailyState(){
 /* ---------- url params (challenge links) ---------- */
 let challenge=0;
 try{const q=new URLSearchParams(location.search);challenge=Math.max(0,Math.min(999,parseInt(q.get("c")||"0",10)||0));}catch(e){}
-const shareBase=(()=>{try{const u=location.href.split(/[?#]/)[0];return u.startsWith("http")?u:"";}catch(e){return "";}})();
+const CANON="https://ostromaj.github.io/Themostaddictinggame/";
+const shareBase=(()=>{try{if(/github\.io$/.test(location.hostname))return location.href.split(/[?#]/)[0];}catch(e){}return CANON;})();
 
 /* ---------- canvas ---------- */
 const cv=document.getElementById("c"), ctx=cv.getContext("2d");
